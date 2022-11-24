@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MercadoLiebre</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="icon" href="img/favicon.ico">
+
+</head>
+
+<body>
+
+    <div id="MainDiv">
+        <a href="./index.html">
+            <img src="img/mercado-liebre.png" alt="mercado-liebre-logo" width="200">
+        </a>
+        
+        <h1>Registro</h1>
+
+        <form action="" id="toRegisterForm">
+            <div class="-item">
+                <label for="II1">Nombre:</label> <!-- II1: Item Input 1 -->
+                <input type="text" name="" id="II1">
+            </div>
+            <div class="-item">
+                <label for="II2">Email:</label>
+                <input type="text" name="" id="II2">
+            </div>
+            <div class="-item">
+                <label for="II3">Contraseña:</label>
+                <input type="password" name="" id="II3">
+            </div>
+            <div class="-item">
+                <label for="II3">Repite la Contraseña:</label>
+                <input type="password" name="" id="II4">
+            </div>
+
+            <button type="button" id="seePassword" onclick="showPassword()"> 
+                <i class='bx bx-low-vision' ></i> 
+                <p id="PPartner">Mostrar Contraseña</p>
+            </button>
+            
+            <br> <br>
+
+            <p id="possibleAnswerInvalidAccountR"></p>
+            <button name="" id="register-button" type="button">Registrarse</button>
+        </form>
+
+    </div>
+
+</body>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
+
+    body {background-color:#fbbc02;}
+    #MainDiv {
+        background-color: white;
+        width: 500px; /*height: 450px;*/
+        margin: auto;
+        top: 50%;
+        transform: translate(0, +25%);
+        border-radius: 25px;
+    }
+    img {
+        display: block;
+        margin-left: auto; margin-right: auto;
+        margin-bottom: 40px;
+    }
+    /*#MainDiv img, #MainDiv h1, #MainDiv form {transform: translate(0, +70%);}*/
+    h1 {
+        font-family:'Roboto', sans-serif;
+    }
+
+    form {
+        margin-left: auto; margin-right: auto;
+    }
+
+    form div{
+        margin-bottom: 10px;
+    /*    transform: translateX(25%);*/
+    }
+
+    form div * {width: 150px;}
+
+    form div label {
+        font-size: 30px;
+    }
+
+    form div input {
+        font-weight: 400;
+        font-size: 25px;
+        width: 100%;
+    }
+
+    #register-button {
+        /*transform: translateX(145%);*/
+        height: 40px;
+        font-size: 13pt;
+        background-color: blueviolet;
+        color: white;
+        border: rgba(255, 255, 255, 0) 1px solid;
+        border-radius: 5px;
+    }
+
+    #register-button:hover {
+        background-color: rgb(152, 82, 218);
+    }
+
+    /**
+    #register-button:hover {
+        background-color: rgb(200, 145, 252);
+        border-color: blueviolet;
+        font-size: 15pt;
+        /*transform: translateX(130%);*/
+    /*}**/
+    
+
+    #posibleAnswerInvalidAccountR {
+        display: none;
+        color: red
+    }
+
+    i {
+        font-size: 30px;
+        display: inline-block;
+    }
+
+    button p {
+        display: inline-block;
+    }
+
+    #seePassword {
+        margin-bottom: 7px;
+        background-color: blueviolet;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        padding-left: 10px; padding-right: 10px;
+    }
+
+    #seePassword p {
+        transform: translateY(-2px); /* Sorry */
+        color: white;
+    }
+
+</style>
+
+<script>
+
+function textValidation (text, moreChars) {
+    let validChars = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789_." + moreChars
+    for (let i=0; i<text.length; i++) {
+        if (validChars.indexOf(text[i]) == -1) {console.log(`${text[i]} (pos ${i})`); return false}
+    }
+    return true
+}
+
+function emailValidation (text) {
+    let validChars = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789_.@"
+    if (!textValidation(text, "@")) {return false}
+    if (
+        text.indexOf("@") == -1 ||
+        text.indexOf(".") == -1
+    ) {return false}
+    return true
+}
+
+function passwordValidation(text) {
+    if (!textValidation(text, "._:-"))  {console.log("a"); return false}
+
+    let lowerCase = "abcdefghijklmnñopqrstuvwxyz"
+    let upperCase = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
+    let specialChars = "._:-"
+
+    let lowerValid = false
+    let upperValid = false
+    let specialValid = false
+
+    for (let i=0; i<text.length; i++) {
+        if (lowerCase.indexOf(text[i]) != -1) {lowerValid = true}
+        if (upperCase.indexOf(text[i]) != -1) {upperValid = true}
+        if (specialChars.indexOf(text[i]) != -1) {specialValid = true}
+    }
+
+    if (
+        (!lowerValid) || (!upperValid) || (!specialValid)
+    ) 
+    {return false}
+
+    return true
+}
+
+document.getElementById("register-button").addEventListener("click", function AnswerRegister(){
+    let name = document.getElementById("II1").value
+    let email = document.getElementById("II2").value
+    let password = document.getElementById("II3").value
+
+    var error = ""
+
+    // This errors will be ordered by importance (least important first, most important last)
+    if(!passwordValidation(password, "")){error = "Contraseña Invalida: Debe contener por lo menos una letra en minuscula, una en mayuscula, y un caracter especial"}  
+    if(password.length <= 4) {error = "Contraseña Invalida: Debe contener por lo menos 5 caracteres"}
+    if(!emailValidation(email, "")){error = "Email Invalido"}
+    if(name.length <= 4) {error = "Nombre Invalido: Debe contener por lo menos 5 caracteres"}
+    if(!textValidation(name, "")){error = "Nombre Invalido: Solo puedes ingresar caracteres alfanumericos, barras bajas o puntos"}
+    if(password != document.getElementById("II4").value) {error = "Las contraseñas ingresadas no son iguales"}
+
+    if (error == "") {
+        document.getElementById("possibleAnswerInvalidAccountR").textContent = ""
+        alert("Registrado con exito")
+        document.getElementById("II1").value = ""
+        document.getElementById("II2").value = ""
+        document.getElementById("II3").value = ""
+        document.getElementById("II4").value = ""
+        window.location.href = "./index.html" // redirecting
+    }
+    else {
+        var show = document.getElementById("possibleAnswerInvalidAccountR")
+        show.style.display = "block"
+        show.textContent = error
+        show.style.color = "red"
+    }
+})
+
+var vision = document.getElementById("seePassword")
+var pass1 = document.getElementById("II3")
+var pass2 = document.getElementById("II4")
+var PPartner = document.getElementById("PPartner")
+
+function showPassword(){
+    vision.style.color = "pink"
+    PPartner.style.color = "pink"
+    pass1.setAttribute("type", "text")
+    pass2.setAttribute("type", "text")
+    vision.setAttribute("onclick", "hidePassword()")
+}
+
+function hidePassword() {
+    vision.style.color = "white"
+    PPartner.style.color = "white"
+     pass1.setAttribute("type", "password")
+    pass2.setAttribute("type", "password")
+    vision.setAttribute("onclick", "showPassword()")
+}
+
+</script>
