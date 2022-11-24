@@ -1,0 +1,97 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
+
+body {background-color:#fbbc02;}
+
+#MainDiv {
+    background-color: white;
+    width: 500px; /*height: 450px;*/
+    margin: auto;
+    top: 50%;
+    transform: translate(0, +25%);
+    border-radius: 25px;
+}
+
+img {
+    display: block;
+    margin-left: auto; margin-right: auto;
+    margin-bottom: 40px;
+}
+    
+/*#MainDiv img, #MainDiv h1, #MainDiv form {transform: translate(0, +70%);}*/
+
+h1 {
+    font-family:'Roboto', sans-serif;
+}
+
+form {
+    margin-left: auto; margin-right: auto;
+}
+
+form div{
+    margin-bottom: 10px;
+/*    transform: translateX(25%);*/
+}
+
+form div * {width: 150px;}
+
+form div label {
+    font-size: 30px;
+}
+
+form div input {
+    font-weight: 400;
+    font-size: 25px;
+    width: 100%;
+}
+
+#register-button {
+    /*transform: translateX(145%);*/
+    height: 40px;
+    font-size: 13pt;
+    background-color: blueviolet;
+    color: white;
+    border: rgba(255, 255, 255, 0) 1px solid;
+    border-radius: 5px;
+}
+
+#register-button:hover {
+    background-color: rgb(152, 82, 218);
+}
+
+/**
+#register-button:hover {
+    background-color: rgb(200, 145, 252);
+    border-color: blueviolet;
+    font-size: 15pt;
+    /*transform: translateX(130%);*/
+/*}**/
+    
+#posibleAnswerInvalidAccountR {
+    display: none;
+    color: red
+}
+
+i {
+    font-size: 30px;
+    display: inline-block;
+}
+
+button p {
+    display: inline-block;
+}
+
+#seePassword {
+    margin-bottom: 7px;
+    background-color: blueviolet;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding-left: 10px; padding-right: 10px;
+}
+
+#seePassword p {
+    transform: translateY(-2px); /* Sorry */
+    color: white;
+}
+
