@@ -44,6 +44,8 @@ for (let i=0; i<listOfProducts[1].length; i++) {
     `<img src="img/productos/${element.img}" alt="">` +
     `<br>` +
     `<label for="PCI${element.id}">${element.name}</label>` +
+    `<br>` + 
+    `<input type="submit" id="PCI${element.id}" value="Comprar"> <!-- PCI: Product Card Input -->` +
     `</div>` + ``
 
     ProductsLine2.innerHTML += textToAdd
@@ -65,11 +67,29 @@ document.getElementById("login-button").addEventListener("click", (e) => {
         document.getElementById("nameLogged").innerHTML = "FerrixCoding"
     }
     else {
-        alert("No tenes una cuenta registrada, vas a acceder en anonimo")
-        document.getElementById("HL2_right").style.display = "none"
-        document.getElementById("personLogged").style.display = "inline-block"
 
-        document.getElementById("nameLogged").innerHTML = "Anonymous User"
+        var anonymousMode = confirm("No tenes una cuenta registrada, ¿Deseas acceder en anonimo?")
+
+        if (anonymousMode) {
+            document.getElementById("HL2_right").style.display = "none"
+            document.getElementById("personLogged").style.display = "inline-block"
+            document.getElementById("nameLogged").innerHTML = "Anonymous User"
+        }
     }
 })
 
+/*
+
+TO BE CONTINUED
+
+var sectionShoppingCart = document.getElementById("ShoppingCart")
+
+var ShoppingCart = []
+
+var buyInputs = document.querySelectorAll(".product-card input")
+
+for (let i=0; i<buyInputs.length; i++) {
+    buyInputs[i].addEventListener("click", console.log("a"))
+}
+
+*/
