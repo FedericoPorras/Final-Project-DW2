@@ -1,24 +1,27 @@
 var listOfProducts = [[], []]
+var listToSearch = {}
 var id = 0
 
 class Product {
 
-    constructor (name, img, line) {
+    constructor (name, img, line, price) {
         // The img have to be into the products folder
         this.name = name;
         this.img = img;
         this.id = id+1; id++
         listOfProducts[line-1].push(this);
+        listToSearch[id] = this
+        this.price = price
     }
 }
 
-ProdL1_1 = new Product("Cafetera Moulinex", "img-cafetera-moulinex.jpg", 1);
-ProdL1_2 = new Product("TV Samsung Smart", "img-tv-samsung-smart.jpg", 1);
-ProdL1_3 = new Product("MACBOOK PRO", "img-macbook-pro-2019.jpg", 1);
-ProdL1_4 = new Product("Samsung Galaxy", "img-samsung-galaxy-s10.jpg", 1)
+ProdL1_1 = new Product("Cafetera Moulinex", "img-cafetera-moulinex.jpg", 1, 15000);
+ProdL1_2 = new Product("TV Samsung Smart", "img-tv-samsung-smart.jpg", 1, 40000);
+ProdL1_3 = new Product("MACBOOK PRO", "img-macbook-pro-2019.jpg", 1, 35000);
+ProdL1_4 = new Product("Samsung Galaxy", "img-samsung-galaxy-s10.jpg", 1, 50000)
 
-ProdL2_1 = new Product("Samsung Galaxy","img-samsung-galaxy-s10.jpg",2)
-ProdL2_2 = new Product("TV Samsung Smart", "img-tv-samsung-smart.jpg", 2)
+ProdL2_1 = new Product("Samsung Galaxy","img-samsung-galaxy-s10.jpg",2, 40000)
+ProdL2_2 = new Product("TV Samsung Smart", "img-tv-samsung-smart.jpg", 2, 40000)
 
 const ProductsLine1 = document.getElementById("PL1")
 for (let i = 0; i < listOfProducts[0].length; i++) {
@@ -78,18 +81,32 @@ document.getElementById("login-button").addEventListener("click", (e) => {
     }
 })
 
-/*
-
-TO BE CONTINUED
-
 var sectionShoppingCart = document.getElementById("ShoppingCart")
-
 var ShoppingCart = []
 
-var buyInputs = document.querySelectorAll(".product-card input")
+function addProdShopCart(product){
+    let placeToAdd = document.getElementById("ShoppingCartBody")
 
-for (let i=0; i<buyInputs.length; i++) {
-    buyInputs[i].addEventListener("click", console.log("a"))
+    let textToAdd = `<tr>` +
+        `<td>${product.name}</td>` +
+        `<td>$${product.price}</td>` +
+        `</tr>`
+
+    placeToAdd.innerHTML += textToAdd
 }
 
-*/
+var buyInputs = document.querySelectorAll(".product-card input")
+for (let i=0; i<buyInputs.length; i++) {
+    buyInputs[i].addEventListener("click", () => {
+        let chosenProduct = listToSearch[i+1]
+        ShoppingCart.push(chosenProduct)
+        addProdShopCart(chosenProduct)
+    })
+}
+
+document.getElementById("clearShoppingCartButton").addEventListener("click", () => {
+    console.log("asad")
+    ShoppingCart = []
+    let placeToClear = document.getElementById("ShoppingCartBody")
+    placeToClear.innerHTML = ""
+})

@@ -213,6 +213,33 @@ label {
     padding-top: 60px;
 }
 
+#ShoppingCart {
+    margin: 20px;
+    padding: 15px;
+    display: inline-block;
+    border: rgb(255, 153, 0) solid 3px;
+    border-radius: 20px;
+}
+
+
+/* #ShoppingCart table thead th {
+    padding: 8px;
+} */
+
+#ShoppingCart table tbody tr td, #ShoppingCart table thead tr th {
+    padding-right: 15px; padding-left: 15px;
+}
+
+#ShoppingCart table {
+    margin-bottom: 10px;
+}
+
+#ShoppingCart button {
+    background-color: white;
+    border: #fbbc02 solid 3px;
+    border-radius: 12px;
+}
+
 @media screen and (max-width: 1200px) {
     #PL1 .product-card img {width: 90%}
     #PL2 .product-card img {width: 90%}
