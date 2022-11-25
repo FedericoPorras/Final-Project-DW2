@@ -47,15 +47,20 @@ p, a {
     
 }
 
-.HLP a, .HLP p{
+.HLP a, .HLP p {
     font-size: 15pt;
     transition-property: font-size;
     transition-duration: .3s;
     transition-timing-function: ease-in
 }
 
-.HLP a:hover, .HLP p:hover{
+/* .HLP a:hover, .HLP p:hover{
     font-size: 20pt;
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+} */
+
+.HLP a:hover {
     color: rgb(255, 255, 255);
     text-decoration: underline;
 }
@@ -98,6 +103,13 @@ h1 {
     color: white;
     border: 5px solid rgb(23, 155, 255);
     border-radius: 10px;
+}
+
+.product-card input:active {
+    background-color: rgb(139, 205, 255);
+    padding: 3px; padding-left: 6px; padding-right: 6px;
+    border: 3px solid rgb(4, 0, 255);
+    color: rgb(4, 0, 255);
 }
 
 #PL1 .product-card img {
