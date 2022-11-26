@@ -95,6 +95,18 @@ function addProdShopCart(product){
     placeToAdd.innerHTML += textToAdd
 }
 
+function updateShopCart(){
+    document.getElementById("ShoppingCartBody").innerHTML = ""
+    let priceTotal = 0
+    for (let i=0; i<ShoppingCart.length; i++) {
+        addProdShopCart(ShoppingCart[i])
+        priceTotal += ShoppingCart[i].price
+    }
+
+    let total = {name:"TOTAL", price:priceTotal}
+    addProdShopCart(total)
+}
+
 var buyInputs = document.querySelectorAll(".product-card input")
 for (let i=0; i<buyInputs.length; i++) {
     buyInputs[i].addEventListener("click", () => {
@@ -105,7 +117,6 @@ for (let i=0; i<buyInputs.length; i++) {
 }
 
 document.getElementById("clearShoppingCartButton").addEventListener("click", () => {
-    console.log("asad")
     ShoppingCart = []
     let placeToClear = document.getElementById("ShoppingCartBody")
     placeToClear.innerHTML = ""
